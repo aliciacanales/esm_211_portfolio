@@ -2,7 +2,6 @@ library(tidyverse)
 library(here)
 library(janitor)
 library(readxl)
-library(tsibble)
 library(dplyr)
 library(ggplot2)
 
@@ -20,7 +19,7 @@ coho_yr <- coho %>%
   mutate(date = lubridate::as_date(year)) 
 
 ## Making a ggplot of the time series
-coho_ts <- ggplot(data = coho_yr, aes(x = year, y = abundance, color = population)) + 
+ggplot(data = coho_yr, aes(x = year, y = abundance, color = population)) + 
   geom_line() +
   scale_color_manual(values = c('#355c7d', '#f67280', '#f8b195'), 
                      labels = c('Alsea', 'Beaver', 'Coos')) +
@@ -34,7 +33,7 @@ coho_ts <- ggplot(data = coho_yr, aes(x = year, y = abundance, color = populatio
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
 
-coho_ts
+
 
 
 
