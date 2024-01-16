@@ -22,15 +22,17 @@ coho_yr <- coho %>%
 ## Making a ggplot of the time series
 coho_ts <- ggplot(data = coho_yr, aes(x = year, y = abundance, color = population)) + 
   geom_line() +
-  scale_color_manual(values = c('#355c7d', '#f67280', '#f8b195')) +
-  scale_x_continuous(breaks=seq(1994, 2019, by = 1)) +
+  scale_color_manual(values = c('#355c7d', '#f67280', '#f8b195'), 
+                     labels = c('Alsea', 'Beaver', 'Coos')) +
+  scale_x_continuous(breaks=seq(1994, 2019, 
+                                by = 1)) +
   scale_y_continuous(labels=scales::comma) +
   labs(x = 'Year',
        y = 'Abundance',
-       title = 'Times Series of Oregon Coast Coho Salmon Populations from 1994 to 2019') +
+       title = 'Times Series of Oregon Coast Coho Salmon Populations from 1994 to 2019',
+       color = 'Population') +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
-  (leg.tex = 'Population')
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
 
 coho_ts
 
