@@ -18,7 +18,7 @@ w_pop_data<-read_csv(here("data","population-and-demography.csv"))
 
 #clean the data for only the global human population
 w_pop_data<- w_pop_data |> clean_names() |>
-  filter(country_name=="World") |> 
+  filter(country_name=="Thailand") |> 
   select(year, population) |> drop_na()
 
 #transform year to time
