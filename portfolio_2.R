@@ -7,7 +7,7 @@
 #Clear the R environment
 rm(list = ls())
 
-#Libraries needed
+#Libraries neededx
 library(janitor) #cleans data and names
 library(here) #allows for localized file directory
 library(tidyverse) #makes R work nicely
@@ -136,7 +136,7 @@ human_ts_model<-ggplot(w_pop_data, aes(x=year, y=population))+
   theme_bw()
 human_ts_model
 
-## red is the best fit model
+## purple is the best fit model
 
 
 
