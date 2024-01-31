@@ -8,7 +8,7 @@ library(dplyr)
 library(tidyverse)
 
 #load in the bison data
-bison<- 
+bison<- read_csv(here('data', 'bison.csv'))
   
 #add an intercept 
 bison$intercept<-as.integer(1)

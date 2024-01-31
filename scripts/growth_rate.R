@@ -1,5 +1,6 @@
 install.packages("growthrate")
 library(growthrate)
+library(here)
 
 ##..........fit_easylinear..............
 ## specfiy what time is
@@ -17,3 +18,4 @@ library(growthrate)
 
 ##.......find r and k using bison data using three different models (exp,logistic, spline)............
 ## code is in linus box
+
