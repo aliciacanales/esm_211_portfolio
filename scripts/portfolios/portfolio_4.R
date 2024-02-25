@@ -15,18 +15,29 @@ bison$intercept<-as.integer(1)
 
 #Identify variables
 y <- bison$bison # y value is bison counts
-x0 <- bison %>% select(intercept) 
+x0 <- bison %>% 
+  select(intercept) 
 x0 <- as.matrix(x0) # turns x0 into a matrix 
 
 #Create three glarma models that have a time lag of 1, 2, and 7
 bison_null_lag <- glarma(y, x0, phiLags = c(1), type = "Poi", method = "FS",
                               residuals = "Pearson", maxit = 100, grad = 1e-6)
+bison_lag_2 <- glarma(y, x0, phiLags = c(2), type = "Poi", method = "FS",
+                         residuals = "Pearson", maxit = 100, grad = 1e-6)
+bison_lag_7 <- glarma(y, x0, phiLags = c(7), type = "Poi", method = "FS",
+                         residuals = "Pearson", maxit = 100, grad = 1e-6)
 
 # 1. Visually compare the plots. Which looks like the best fit?
-plot.glarma(bison_null_lag) #if you have an error in plot.window for the last plot, it's okay to ignore 
+plot.glarma(bison_lag_7) #if you have an error in plot.window for the last plot, it's okay to ignore 
+
+##Lag 2 looks like the better fit
 
 # 2. Compare the AIC for the models. Which is actually the best fit? 
-summary(bison_null_lag)
+summary(bison_null_lag) ## AIC 7200.3
+summary(bison_lag_2) ## AIC 6684.275
+summary(bison_lag_7) ## AIC 14214.01
+
+## Checks out the lag 2 is the better fit
 
 # 3. Create a model with major events factored in and compare it with the best fit model identified in question 2. Is the model with major events a better fit? 
 
@@ -42,10 +53,14 @@ x1 <- bison %>% select(intercept, major_events) # x1 explanatory variables, pres
 x1 <- as.matrix(x1) #turns x1 into a matrix
 
 #Create the model with major events. Make the lag the same as the best fit model from question 2 
-bison_exp_lag <- glarma(y, x1, phiLags = c(1), type = "Poi", method = "FS", 
+
+## changed the lag to 2 since that was the best fit model from above
+bison_exp_lag <- glarma(y, x1, phiLags = c(2), type = "Poi", method = "FS", 
                              residuals = "Pearson", maxit = 100, grad = 1e-6)
 #summary 
-summary(bison_exp_lag)
+summary(bison_exp_lag) ## AIC: 6265.411 
+
+## This model is now the best fit model
 
 
 #extra if you're feeling spry 
