@@ -34,7 +34,7 @@ plot.glarma(bison_lag_7) #if you have an error in plot.window for the last plot,
 
 # 2. Compare the AIC for the models. Which is actually the best fit? 
 summary(bison_null_lag) ## AIC 7200.3
-summary(bison_lag_2) ## AIC 6684.275
+summary(bison_lag_2) ## AIC 6684.275 This one has the smallest AIC so it is the better model
 summary(bison_lag_7) ## AIC 14214.01
 
 ## Checks out the lag 2 is the better fit

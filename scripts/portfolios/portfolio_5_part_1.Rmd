@@ -27,6 +27,7 @@ library(adehabitatHR)
 
 ### For working with SpatialPointsDataFrames
 library(sp)
+library(sf)
 
 ### To help with display
 library(scales)
@@ -124,14 +125,19 @@ elk.mcpgeo <- spTransform(elk.mcp, CRS("+proj=longlat"))
 ### To use the stadiamaps basemaps, you will need to generate your own API key
 ### You can generate your own for free here: https://client.stadiamaps.com/signup/
 
-register_stadiamaps(key = '92d8b608-78f2-4e61-839c-fca5ea3e0cea')
+library(sp)
+library(leaflet)
 
 
-mybasemap <- get_stadiamap(bbox = c(left = min(elk.spgeo@coords[,1])-0.005, 
-                                    bottom = min(elk.spgeo@coords[,2])-0.005, 
-                                    right = max(elk.spgeo@coords[,1])+0.005, 
-                                    top = max(elk.spgeo@coords[,2])+0.005), 
-                           zoom = 12)
+## register_stadiamaps(key = "92d8b608-78f2-4e61-839c-fca5ea3e0cea")
+
+leaflet() %>% 
+  addProviderTiles(providers$Esri.WorldImagery) %>% 
+  addProviderTiles("CartonDB.PositionOnlyLabels") %>% 
+  addPolygons(data = elk.mcpgeo,
+              label = ~id) %>% 
+  addScaleBar()
+ ## addcirles elk.spgeo
 
 # Turn the spatial data frame of points into just a dataframe for plotting in ggmap
 elk.geo <- data.frame(elk.spgeo@coords, 
