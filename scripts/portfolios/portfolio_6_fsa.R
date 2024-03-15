@@ -40,5 +40,7 @@ confint(k_pass) ## N0 = 69060 and p = .013. P tells us the probability of catch
 
 ## 2. Why are the Leslie and DeLury methods not valid at estimating N0? 
 
+
 ## 3. What values can you look at to determine the reliability of the data?
+
 ## Could look at the confidence intervals to see if there could be overlap

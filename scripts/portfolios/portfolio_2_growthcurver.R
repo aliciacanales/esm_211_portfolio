@@ -1,16 +1,9 @@
-# Logistic growth of Human Population & Bison
-# Example
-# Christopher L Jerde
-# Notes:Data from https://ourworldindata.org/population-growth#introduction
-########################################
 
-#Clear the R environment
 rm(list = ls())
 
-#Libraries neededx
-library(janitor) #cleans data and names
-library(here) #allows for localized file directory
-library(tidyverse) #makes R work nicely
+library(janitor)
+library(here) 
+library(tidyverse) 
 library(growthcurver) # older package, for logistic growth
 
 #get the data

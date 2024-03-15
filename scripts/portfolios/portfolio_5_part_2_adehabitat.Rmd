@@ -1,6 +1,6 @@
 ---
 title: "Habitat Range Part 2: Kernels"
-author: "Justine Lang"
+author: "Alicia Canales"
 date: "2024-01-30"
 output: 
   html_document: 
@@ -107,11 +107,6 @@ plot(elk.kernel.poly, col = elk.kernel.poly@data$id)
 
 ## I changed the elk numbers to individual 640, 644, and 637. I noticed that the non linear least squares did not fit the model as well as before. THe range is also now more fragmented at the top, but more connected with overlap more towards the bottom/end of the range. 
 
-
-
-
-
-#OPTIONAL- Like with the MCPs, you can repeat this process with the fed elk herds instead of the individual animals, though your computer may get a bit of a workout attempting to create kernels for more than one or two herds at a time, especially through the LSCV method. For the sake of time, we'll skip this today, but if you happen to have time to kill, feel free to go for it!
 
 
 
